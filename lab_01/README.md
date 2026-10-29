@@ -29,9 +29,10 @@ has three parts.
    [diffdrive_bot README](diffdrive_bot/README.md). It shows the same ideas on a robot model: a URDF
    description, simulation in Gazebo, the TF tree, and Python nodes that talk to each other with a
    custom message, a service and an action.
-3. **Exercise.** You add a depth camera and an IMU to the robot's URDF, then write your own packages
-   for the robot, from a simple node up to an action client. The tasks are in
-   [EXERCISE.md](EXERCISE.md).
+3. **Exercise.** In a project folder of your own, with your copy of the lab packages, you add a
+   depth camera and an IMU to the robot's URDF, then write your own packages for the robot, from a
+   simple node up to an action client. You hand in this folder as a GitHub repository. The tasks are
+   in [EXERCISE.md](EXERCISE.md).
 
 By the end of the session you should be able to create a ROS 2 workspace and packages, describe a
 robot in URDF and simulate it in Gazebo, inspect a running system with the `ros2` tools, RViz and the

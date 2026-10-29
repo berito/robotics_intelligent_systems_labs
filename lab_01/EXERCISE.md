@@ -37,12 +37,42 @@ You need the Python versions of these official ROS 2 tutorials, listed on the do
 - Writing an action server and client
 - Creating a launch file, and Integrating launch files into ROS 2 packages
 
+## Your project folder
+
+You do the whole exercise in a folder of your own, `lab1_exercise`, in the `src` folder of your
+workspace. It holds your own copy of the two lab packages, diffdrive_bot and lab_interfaces, which
+you change and use, and the two packages you write. This folder is what you hand in at the end.
+
+Create the folder and copy the lab packages into it:
+
+```bash
+cd ~/ros2_ws/src
+mkdir lab1_exercise
+cp -r robotics_intelligent_systems_labs/lab_01/diffdrive_bot robotics_intelligent_systems_labs/lab_01/lab_interfaces lab1_exercise/
+touch robotics_intelligent_systems_labs/lab_01/COLCON_IGNORE
+```
+
+colcon refuses to build two packages with the same name, so the `COLCON_IGNORE` file tells it to skip
+the lab's own lab_01 packages; from now on it builds your copies. Because the packages moved, build
+the workspace once from scratch:
+
+```bash
+cd ~/ros2_ws
+rm -rf build install log
+colcon build --symlink-install
+source install/setup.bash
+```
+
+The examples this exercise points to are the same files in your copy of diffdrive_bot and
+lab_interfaces.
+
 ## Step 1: Add a depth camera and an IMU to the robot
 
-In this step you change diffdrive_bot itself: its URDF, its world and its bridge configuration.
-Comments marked `TODO (exercise Step 1)` in each of these files show where your additions go.
+In this step you change your copy of diffdrive_bot, in `lab1_exercise/diffdrive_bot`: its URDF, its
+world and its bridge configuration. Comments marked `TODO (exercise Step 1)` in each of these files
+show where your additions go.
 
-Add two sensors to [urdf/diffdrive_bot.urdf.xacro](diffdrive_bot/urdf/diffdrive_bot.urdf.xacro):
+Add two sensors to `urdf/diffdrive_bot.urdf.xacro`:
 
 1. A **depth camera** on the back face of the chassis, looking backwards, the opposite way to the
    front camera. Give it a link, `depth_camera_link`, the same size as `camera_link`, with a visual,
@@ -54,14 +84,13 @@ Add two sensors to [urdf/diffdrive_bot.urdf.xacro](diffdrive_bot/urdf/diffdrive_
    `base_link`. Its Gazebo sensor has type `imu` and publishes on `/imu` at 50 Hz.
 
 Gazebo only simulates an IMU when the world loads the IMU system, so add this line next to the other
-plugins in [worlds/obstacles.sdf](diffdrive_bot/worlds/obstacles.sdf):
+plugins in `worlds/obstacles.sdf`:
 
 ```xml
 <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu" />
 ```
 
-Then add the new topics to [config/bridge.yaml](diffdrive_bot/config/bridge.yaml), from Gazebo to
-ROS 2:
+Then add the new topics to `config/bridge.yaml`, from Gazebo to ROS 2:
 
 | Gazebo topic | Gazebo type | ROS 2 topic | ROS 2 type |
 |--------------|-------------|-------------|------------|
@@ -73,7 +102,7 @@ ROS 2:
 Example: `camera_link`, its joint and its `<gazebo>` sensor block in the URDF show the same pattern for
 the front camera, and the camera entries in `bridge.yaml` show the bridge format.
 
-**Check.**
+**Check.** Rebuild and source the workspace first, as for every step below.
 
 1. `ros2 launch diffdrive_bot display.launch.py` shows the depth camera on the back of the robot, and
    RViz draws the frames `depth_camera_link` and `imu_link`.
@@ -88,7 +117,7 @@ the front camera, and the camera entries in `bridge.yaml` show the bridge format
 
 ## Your packages
 
-You write two packages, in the `src` folder of your workspace next to the repository:
+You write two packages, in your `lab1_exercise` folder next to your copies of the lab packages:
 
 | Package | Build type | Holds |
 |---------|------------|-------|
@@ -102,11 +131,10 @@ The interface types need a CMake package because only CMake packages can generat
 Create both packages:
 
 ```bash
-cd ~/ros2_ws/src
+cd ~/ros2_ws/src/lab1_exercise
 ros2 pkg create --build-type ament_cmake --license MIT my_robot_interfaces
-ros2 pkg create --build-type ament_python --license MIT \
-  --dependencies rclpy geometry_msgs nav_msgs std_srvs lab_interfaces my_robot_interfaces \
-  my_robot_nodes
+ros2 pkg create my_robot_nodes --build-type ament_python --license MIT \
+  --dependencies rclpy geometry_msgs nav_msgs std_srvs lab_interfaces my_robot_interfaces
 ```
 
 For every step, rebuild, source, start the robot and run your node in a second terminal:
@@ -275,7 +303,9 @@ From the start position there is room for a square of up to 1 m a side.
 
 ## Hand in
 
-Put your changed diffdrive_bot and your two packages in a Git repository with a README that says how
-to build them and how to run each step. Add a screenshot of RViz showing the depth image and point
+Make your `lab1_exercise` folder a Git repository and push it to GitHub. It holds four packages: your
+changed diffdrive_bot, lab_interfaces, `my_robot_interfaces` and `my_robot_nodes`, so it builds on its
+own in the `src` folder of any workspace. Add a README that says how to build the packages and how to
+run each step. Add a screenshot of RViz showing the depth image and point
 cloud from Step 1, and a screenshot of `rqt_graph` while `square.launch.py` runs. Write what did not
-work and why you think so. Share your exercise by sending its GitHub URL.
+work and why you think so. Share your exercise by sending the GitHub URL of this repository.

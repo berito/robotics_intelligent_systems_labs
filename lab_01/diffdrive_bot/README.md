@@ -241,7 +241,7 @@ own nodes for the robot.
 
 ### Interfaces
 
-All three are defined in the lab_interfaces package.
+The nodes use one message, one service and one action, all defined in the lab_interfaces package.
 
 [msg/ObstacleInfo.msg](../lab_interfaces/msg/ObstacleInfo.msg) is the nearest obstacle in front of the robot:
 
