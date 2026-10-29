@@ -62,7 +62,7 @@ Clone the repository into the `src` folder of a ROS 2 workspace and build this l
 ```bash
 source /opt/ros/humble/setup.bash
 mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone -b msc https://github.com/berito/robotics_intelligent_systems_labs.git
+git clone https://github.com/berito/robotics_intelligent_systems_labs.git
 cd ~/ros2_ws
 colcon build --symlink-install --packages-up-to diffdrive_bot
 source install/setup.bash

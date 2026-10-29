@@ -1,13 +1,11 @@
 # Robotics and Intelligent Systems Labs
 
-ROS 2 and Gazebo lab material for the robotics courses at Addis Ababa University, academic year 2026.
+ROS 2 and Gazebo lab material for **Robotics and Intelligent Systems**, a course in the MSc in
+Artificial Intelligence at Addis Ababa University, academic year 2026.
 
-The repository has one branch per course. Clone the branch of your course only:
-
-| Branch | Program | Course | Lecturer | Lab Assistant |
-|--------|---------|--------|----------|---------------|
-| `msc` | MSc in Artificial Intelligence | Robotics and Intelligent Systems | Adane Letta (PhD) | Mohammed Sraj (MSc AI) |
-| `bsc` | BSc in Software Engineering | Introduction to Robotics and Intelligent Systems | Mohammed Sraj (MSc AI), part-time | Mohammed Sraj (MSc AI) |
+| Program | Course | Lecturer | Lab Assistant |
+|---------|--------|----------|---------------|
+| MSc in Artificial Intelligence | Robotics and Intelligent Systems | Adane Letta (PhD) | Mohammed Sraj (MSc AI) |
 
 Each lab session has a folder of its own, with its ROS 2 packages, a README that walks through them,
 and an exercise.
@@ -25,22 +23,12 @@ Each lab's README lists anything else it needs.
 
 ## Getting started
 
-Clone the branch of your course into the `src` folder of a ROS 2 workspace.
-
-MSc in Artificial Intelligence:
+Clone the repository into the `src` folder of a ROS 2 workspace:
 
 ```bash
 source /opt/ros/humble/setup.bash
 mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone -b msc https://github.com/berito/robotics_intelligent_systems_labs.git
-```
-
-BSc in Software Engineering:
-
-```bash
-source /opt/ros/humble/setup.bash
-mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone -b bsc https://github.com/berito/robotics_intelligent_systems_labs.git
+git clone https://github.com/berito/robotics_intelligent_systems_labs.git
 ```
 
 A new lab folder is added for every lab session. To get it, pull the repository:
