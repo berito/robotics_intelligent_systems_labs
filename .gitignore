@@ -1,0 +1,12 @@
+# colcon output, in case a workspace is built inside the repository
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor settings and indexes, specific to each machine
+.vscode/
+.idea/
