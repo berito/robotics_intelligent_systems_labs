@@ -1,0 +1,4 @@
+# cv_bridge on Humble needs NumPy 1; opencv-python 4.12+ needs NumPy 2
+ultralytics
+numpy<2
+opencv-python<4.12
