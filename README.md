@@ -13,6 +13,7 @@ and an exercise.
 | Lab | Topic |
 |-----|-------|
 | [lab_01](lab_01) | ROS 2 and custom robot simulation: ROS 2 concepts, a differential-drive robot in Gazebo, and nodes that use topics, services and actions |
+| [lab_02](lab_02) | Perception, sensor fusion and SLAM: object detection and segmentation with pretrained YOLO models on the robot's camera |
 
 ## Requirements
 

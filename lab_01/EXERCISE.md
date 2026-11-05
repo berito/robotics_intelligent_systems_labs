@@ -1,13 +1,3 @@
-**Program:** MSc in Artificial Intelligence
-
-**Course:** Robotics and Intelligent Systems
-
-**Lecturer:** Adane Letta (PhD)
-
-**Lab Assistant:** Mohammed Sraj (MSc AI)
-
-**Academic year:** 2026
-
 # Lab 1 Exercise: Program diffdrive_bot
 
 In this exercise you first give diffdrive_bot two more sensors, a depth camera and an IMU, by

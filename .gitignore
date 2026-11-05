@@ -10,3 +10,9 @@ __pycache__/
 # Editor settings and indexes, specific to each machine
 .vscode/
 .idea/
+
+# Python virtual environments
+.venv/
+
+# YOLO weights, downloaded by setup.sh
+*.pt
